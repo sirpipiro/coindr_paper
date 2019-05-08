@@ -2,16 +2,17 @@
 """
 This file provides useful utilities to be used in the report generation process.
 """
-from reportlab.platypus import Paragraph, KeepInFrame
-from reportlab.lib.styles import getSampleStyleSheet
+from reportlab.pdfgen import canvas, textobject
 
-def get_intro_textframe(filename):
+def read_text(filename, c, x, y, fontz, leading):
+    
+    my_text=c.beginText()
+    my_text.setTextOrigin(x, y)
+    my_text.setFont(c._fontname, fontz, leading)
     
     my_file=open(filename)
-    my_text=my_file.read()
+    for line in my_file:
+        my_text.textLine(line.rstrip())
     my_file.close()
     
-    styles=getSampleStyleSheet()
-    my_text_in_frame=KeepInFrame(420, 150, [Paragraph(my_text, styles['BodyText'])])
-    
-    return my_text_in_frame
+    return my_text
