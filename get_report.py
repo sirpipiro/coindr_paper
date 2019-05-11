@@ -19,13 +19,15 @@ h0=20 #Space between lines
 fontz_title=20
 fontz_body=12
 
-intro_file='/home/hao/Documents/trading_strats/inputs/strat_intro.txt'
-factor_return_image='/home/hao/Documents/trading_strats/inputs/factor_returns_plot.jpg'
-factor_return_comment='/home/hao/Documents/trading_strats/inputs/factor_returns_comment.txt'
+intro_file='./inputs/strat_intro.txt'
+factor_return_image='./inputs/factor_returns_plot.jpg'
+factor_return_comment='./inputs/factor_returns_comment.txt'
 return_image_1='./inputs/return_chart_1.jpg'
-return_image_2='/home/hao/Documents/trading_strats/inputs/return_chart_2.jpg'
-return_image_3='/home/hao/Documents/trading_strats/inputs/return_chart_3.jpg'
-
+return_image_2='./inputs/return_chart_2.jpg'
+return_image_3='./inputs/return_chart_3.jpg'
+ic_image_1='./inputs/ic_chart_1.jpg'
+ic_image_2='./inputs/ic_chart_2.jpg'
+ic_image_3='./inputs/ic_chart_3.jpg'
 
 def drawBodyText(filename, canvas_to_draw, x, y, w, h):
     
@@ -46,7 +48,7 @@ def drawBodyText(filename, canvas_to_draw, x, y, w, h):
     return
 
 #my_canvas=canvas.Canvas('C:\\Users\\leo_s\\Documents\\Git Projects\\trading_strats\\paper.pdf')
-my_canvas=canvas.Canvas('/home/hao/Documents/trading_strats/paper.pdf', pagesize=A4)
+my_canvas=canvas.Canvas('./paper.pdf', pagesize=A4)
 
 # Page One
 my_canvas.setFontSize(fontz_title, leading=h0)
@@ -73,5 +75,18 @@ my_canvas.drawImage(return_image_1, x0, y0-240-h0, width=400, height=200)
 my_canvas.drawImage(return_image_2, x0, y0-480-h0, width=400, height=200)
 my_canvas.drawImage(return_image_3, x0, y0-720-h0, width=400, height=200)
 my_canvas.showPage()
+
+# Page Three
+my_canvas.setFontSize(fontz_title, leading=h0)
+my_canvas.drawString(x0, y0, '4. Information Coefficient Analysis')
+
+my_canvas.setFontSize(fontz_body, leading=h0)
+my_canvas.drawString(x0, y0-30-h0, 'Forward Return IC')
+my_canvas.drawString(x0, y0-270-h0, 'Historical IC Distribution')
+my_canvas.drawString(x0, y0-510-h0, 'IC Heatmap by Month')
+
+my_canvas.drawImage(ic_image_1, x0, y0-240-h0, width=400, height=200)
+my_canvas.drawImage(ic_image_2, x0, y0-480-h0, width=400, height=200)
+my_canvas.drawImage(ic_image_3, x0, y0-720-h0, width=400, height=200)
 
 my_canvas.save()
