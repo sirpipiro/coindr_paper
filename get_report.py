@@ -20,6 +20,7 @@ fontz_title=20
 fontz_body=12
 fontz_disclaimer=8
 
+logo_image='./inputs/logo.jpg'
 intro_file='./inputs/strat_intro.txt'
 factor_return_image='./inputs/factor_returns_plot.jpg'
 factor_return_comment='./inputs/factor_returns_comment.txt'
@@ -57,7 +58,15 @@ def drawBodyText(filename, canvas_to_draw, x, y, w, h):
 my_canvas=canvas.Canvas('./paper.pdf', pagesize=A4)
 
 # Cover
+my_canvas.setFontSize(30)
+my_canvas.drawCentredString(300, 600, 'Deep Factor Research Series')
+my_canvas.setFontSize(20)
+my_canvas.drawCentredString(300, 550, 'On Cryptocurrency Market')
+my_canvas.drawCentredString(300, 300, 'Issue Number One')
+my_canvas.drawCentredString(300, 250, 'May 12, 2019')
 
+my_canvas.drawImage(logo_image, 225, -70, width=150, preserveAspectRatio=True)
+my_canvas.showPage()
 
 # Page One
 my_canvas.setFontSize(fontz_title, leading=h0)
